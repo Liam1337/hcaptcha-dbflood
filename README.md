@@ -22,6 +22,15 @@ The script waits for 5 seconds to allow the page to load.
 The script checks for the presence of an element on the page with the ID `success-message`, and if it exists, it prints "Registration successful". If the element does not exist, it prints "Registration failed".
 The web browser is closed.
 
+Code explanation for nerds:
+The random username and password are generated using the `random.choices` function, which generates a list of randomly chosen characters from the specified alphabet. The alphabet is created by concatenating the lowercase ASCII characters (`string.ascii_lowercase`), the digits (`string.digits`), and the punctuation characters (`string.punctuation`).
+The `solve_hcaptcha` function uses the Requests library to send a POST request to the 2captcha API with the `site_key`, `method`, `googlekey`, and `pageurl` parameters. The `site_key` and `googlekey` parameters are the same thing in this case, and they are passed as arguments to the function. The `pageurl` parameter is also passed as an argument to the function. If the request is successful, the function returns the captcha ID, which is extracted from the response text using string slicing. The function then enters a loop that continually polls the 2captcha API until the hCaptcha is solved, at which point it returns the hCaptcha solution.
+The web browser is opened using the Selenium library and directed to the registration page using the `driver.get` method.
+The hCaptcha's `site_key` is retrieved using the `driver.find_element_by_css_selector` method and the `get_attribute` method.
+The form fields are filled out using the `driver.find_element_by_css_selector` method and the `send_keys` method.
+The form is submitted using the `driver.find_element_by_css_selector` method and the `click` method.
+The success message is checked for using the `driver.find_element_by_css_selector` method. If the element is found, the script prints "Registration successful", otherwise it prints "Registration failed".
+The web browser is closed using the `driver.quit` method.
 
 ```js
 Usage:
