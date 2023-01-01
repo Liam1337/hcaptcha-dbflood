@@ -8,7 +8,7 @@ This code appears to be using the Selenium and Requests libraries to automate th
 
 ## DB-Flood
 
-This code appears to be using the Selenium and Requests libraries to automate the process of registering for a website that uses an hCaptcha for verification. Here is a breakdown of the code:
+##This code appears to be using the Selenium and Requests libraries to automate the process of registering for a website that uses an hCaptcha for verification. Here is a breakdown of the code:
 
 The script imports several libraries that it uses later on.
 It generates a random username and password using the `random` library and the `string` library.
@@ -22,7 +22,8 @@ The script waits for 5 seconds to allow the page to load.
 The script checks for the presence of an element on the page with the ID `success-message`, and if it exists, it prints "Registration successful". If the element does not exist, it prints "Registration failed".
 The web browser is closed.
 
-Code explanation for nerds:
+##Code explanation for nerds:
+
 The random username and password are generated using the `random.choices` function, which generates a list of randomly chosen characters from the specified alphabet. The alphabet is created by concatenating the lowercase ASCII characters (`string.ascii_lowercase`), the digits (`string.digits`), and the punctuation characters (`string.punctuation`).
 The `solve_hcaptcha` function uses the Requests library to send a POST request to the 2captcha API with the `site_key`, `method`, `googlekey`, and `pageurl` parameters. The `site_key` and `googlekey` parameters are the same thing in this case, and they are passed as arguments to the function. The `pageurl` parameter is also passed as an argument to the function. If the request is successful, the function returns the captcha ID, which is extracted from the response text using string slicing. The function then enters a loop that continually polls the 2captcha API until the hCaptcha is solved, at which point it returns the hCaptcha solution.
 The web browser is opened using the Selenium library and directed to the registration page using the `driver.get` method.
